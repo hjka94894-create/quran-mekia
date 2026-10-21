@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>﷽ | القرآن الكريم - صدقة جارية عن روح المرحومة مكية عبد الدائم علي</title>
+    <!-- خطوط عربية زُخرفية وأنيقة -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+    <!-- أيقونات FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d5c3a;
+            --secondary-color: #1b8a5a;
+            --accent-gold: #d4af37;
+            --accent-light-gold: #f3e5ab;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-dark: #222222;
+            --text-muted: #666666;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Tajawal', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        /* الرابط / الهيدر المزخرف */
+        .decorated-header {
+            background: linear-gradient(135deg, #073b24, #0d5c3a, #073b24);
+            color: var(--accent-gold);
+            text-align: center;
+            padding: 15px 10px;
+            border-bottom: 3px solid var(--accent-gold);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+        }
+
+        .decorated-title {
+            font-family: 'Reem Kufi', sans-serif;
+            font-size: 1.5rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+        }
+
+        /* كارت الإهداء */
+        .dedication-card {
+            background: linear-gradient(to bottom, #ffffff, #f1f8f4);
+            max-width: 900px;
+            margin: 25px auto 10px;
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border: 2px solid var(--accent-gold);
+            box-shadow: 0 5px 20px rgba(13, 92, 58, 0.08);
+            position: relative;
+        }
+
+        .bismillah {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .dedication-text {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .deceased-name {
+            font-family: 'Amiri', serif;
+            font-size: 2.2rem;
+            color: var(--accent-gold);
+            text-shadow: 0px 1px 1px rgba(0,0,0,0.2);
+            background: #0d5c3a;
+            color: #f3e5ab;
+            display: inline-block;
+            padding: 5px 25px;
+            border-radius: 30px;
+            margin: 10px 0;
+        }
+
+        .prayer-text {
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            margin-top: 5px;
+        }
+
+        /* أدوات التحكم والقراء */
+        .controls-container {
+            max-width: 1100px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+
+        .control-group {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #e2e8f0;
+        }
+
+        .control-group label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--primary-color);
+        }
+
+        select, input {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        select:focus, input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(13, 92, 58, 0.2);
+        }
+
+        /* مشغل الصوتيات الثابت */
+        .player-bar {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: #073b24;
+            color: white;
+            padding: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        .player-flex {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .now-playing {
+            font-size: 1.1rem;
+            color: var(--accent-light-gold);
+            font-weight: bold;
+        }
+
+        audio {
+            width: 100%;
+            max-width: 500px;
+            height: 40px;
+            border-radius: 20px;
+        }
+
+        /* شبكة السور */
+        .surahs-grid {
+            max-width: 1100px;
+            margin: 30px auto;
+            padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .surah-card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 20px;
+            border: 1px solid #e9ecef;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.03);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .surah-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .surah-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-color: var(--accent-gold);
+        }
+
+        .surah-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 12px;
+        }
+
+        .surah-number {
+            width: 38px;
+            height: 38px;
+            background: #f1f8f4;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .surah-name {
+            font-family: 'Amiri', serif;
+            font-size: 1.6rem;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .surah-info {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .surah-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 10px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: 0.2s;
+            text-decoration: none;
+            font-size: 0.95rem;
+        }
+
+        .btn-play {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .btn-play:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-download {
+            background-color: #f8f9fa;
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-download:hover {
+            background-color: #e8f5e9;
+        }
+
+        /* التذييل / حقوق المصمم */
+        footer {
+            background-color: #052617;
+            color: white;
+            text-align: center;
+            padding: 30px 15px;
+            margin-top: 50px;
+            border-top: 3px solid var(--accent-gold);
+        }
+
+        .designer-credits {
+            font-size: 1.2rem;
+            color: var(--accent-gold);
+            font-weight: bold;
+            margin-top: 10px;
+            letter-spacing: 1px;
+            direction: ltr; /* لعرض الاسم باللغة الإنجليزية بشكل صحيح */
+        }
+
+        @media (max-width: 600px) {
+            .bismillah { font-size: 1.8rem; }
+            .deceased-name { font-size: 1.5rem; }
+            .player-flex { flex-direction: column; text-align: center; }
+            audio { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- رابط وتصميم علوي مزخرف -->
+    <header class="decorated-header">
+        <div class="decorated-title">
+            ﴿ ۩ 🏢 المَـصْـحَـفُ الشَّــرِيفُ 🏢 ۩ ﴾
+        </div>
+    </header>
+
+    <!-- كارت الصدقة الجارية -->
+    <section class="dedication-card">
+        <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَنِ الرَّحِيمِ</div>
+        <p class="dedication-text">صدقة جارية عن روح المرحومة بإذن الله تعالى</p>
+        <div class="deceased-name">مكية عبد الدائم علي</div>
+        <p class="prayer-text">اللَّهُمَّ اغْفِرْ لَهَا وَارْحَمْهَا وَعَافِهَا وَاعْفُ عَنْهَا، وَأَكْرِمْ نُزُلَهَا وَوَسِّعْ مُدْخَلَهَا، وَاجْعَلْ قَبْرَهَا رَوْضَةً مِنْ رِيَاضِ الْجَنَّةِ</p>
+    </section>
+
+    <!-- مشغل الصوتيات الثابت -->
+    <div class="player-bar">
+        <div class="player-flex">
+            <div class="now-playing" id="nowPlayingText">
+                <i class="fa-solid fa-compact-disc fa-spin"></i> اختر سورة للاستماع والتنزيل
+            </div>
+            <audio id="audioPlayer" controls autoplay style="display: none;"></audio>
+        </div>
+    </div>
+
+    <!-- التحكم بالبحث والقراء -->
+    <div class="controls-container">
+        <div class="control-group">
+            <label><i class="fa-solid fa-user-ninja"></i> اختر القارئ (أجمل الأصوات):</label>
+            <select id="reciterSelect" onchange="changeReciter()">
+                <option value="https://server8.mp3quran.net/afs/">مشاري العفاسي</option>
+                <option value="https://server7.mp3quran.net/basit/">عبد الباسط عبد الصمد (مجود)</option>
+                <option value="https://server7.mp3quran.net/sds/">عبد الرحمن السديس</option>
+                <option value="https://server7.mp3quran.net/shri/">سعود الشريم</option>
+                <option value="https://server7.mp3quran.net/ghamdi/">سعد الغامدي</option>
+                <option value="https://server13.mp3quran.net/hussary/">محمود خليل الحصري</option>
+                <option value="https://server10.mp3quran.net/minsh/">محمد صديق المنشاوي (مجود)</option>
+                <option value="https://server11.mp3quran.net/shatri/">ابوبكر الشاطري</option>
+                <option value="https://server6.mp3quran.net/maher/">ماهر المعيقلي</option>
+            </select>
+        </div>
+        <div class="control-group">
+            <label><i class="fa-solid fa-magnifying-glass"></i> بحث عن سورة:</label>
+            <input type="text" id="searchInput" onkeyup="filterSurahs()" placeholder="اكتب اسم السورة هنا...">
+        </div>
+    </div>
+
+    <!-- شبكة السور الـ 114 -->
+    <main class="surahs-grid" id="surahsGrid">
+        <!-- يتم تحميل السور تلقائياً بواسطة JavaScript -->
+    </main>
+
+    <!-- التذييل وحقوق المصمم -->
+    <footer>
+        <p>موقع القرآن الكريم - وقف لله تعالى وصدقة جارية</p>
+        <p>نسأل الله أن يتقبل هذا العمل خالصاً لوجهه الكريم</p>
+        <div style="margin-top: 15px; font-size: 0.95rem; color: #a0aec0;">المصمم:</div>
+        <div class="designer-credits">D. V. @ABDALDAYM</div>
+    </footer>
+
+    <script>
+        // بيانات الـ 114 سورة كاملة
+        const surahs = [
+            { id: 1, name: "الفاتحة", type: "مكية", verses: 7 },
+            { id: 2, name: "البقرة", type: "مدنية", verses: 286 },
+            { id: 3, name: "آل عمران", type: "مدنية", verses: 200 },
+            { id: 4, name: "النساء", type: "مدنية", verses: 176 },
+            { id: 5, name: "المائدة", type: "مدنية", verses: 120 },
+            { id: 6, name: "الأنعام", type: "مكية", verses: 165 },
+            { id: 7, name: "الأعراف", type: "مكية", verses: 206 },
+            { id: 8, name: "الأنفال", type: "مدنية", verses: 75 },
+            { id: 9, name: "التوبة", type: "مدنية", verses: 129 },
+            { id: 10, name: "يونس", type: "مكية", verses: 109 },
+            { id: 11, name: "هود", type: "مكية", verses: 123 },
+            { id: 12, name: "يوسف", type: "مكية", verses: 111 },
+            { id: 13, name: "الرعد", type: "مدنية", verses: 43 },
+            { id: 14, name: "إبراهيم", type: "مكية", verses: 52 },
+            { id: 15, name: "الحجر", type: "مكية", verses: 99 },
+            { id: 16, name: "النحل", type: "مكية", verses: 128 },
+            { id: 17, name: "الإسراء", type: "مكية", verses: 111 },
+            { id: 18, name: "الكهف", type: "مكية", verses: 110 },
+            { id: 19, name: "مريم", type: "مكية", verses: 98 },
+            { id: 20, name: "طه", type: "مكية", verses: 135 },
+            { id: 21, name: "الأنبياء", type: "مكية", verses: 112 },
+            { id: 22, name: "الحج", type: "مدنية", verses: 78 },
+            { id: 23, name: "المؤمنون", type: "مكية", verses: 118 },
+            { id: 24, name: "النور", type: "مدنية", verses: 64 },
+            { id: 25, name: "الفرقان", type: "مكية", verses: 77 },
+            { id: 26, name: "الشعراء", type: "مكية", verses: 227 },
+            { id: 27, name: "النمل", type: "مكية", verses: 93 },
+            { id: 28, name: "القصص", type: "مكية", verses: 88 },
+            { id: 29, name: "العنكبوت", type: "مكية", verses: 69 },
+            { id: 30, name: "الروم", type: "مكية", verses: 60 },
+            { id: 31, name: "لقمان", type: "مكية", verses: 34 },
+            { id: 32, name: "السجدة", type: "مكية", verses: 30 },
+            { id: 33, name: "الأحزاب", type: "مدنية", verses: 73 },
+            { id: 34, name: "سبأ", type: "مكية", verses: 54 },
+            { id: 35, name: "فاطر", type: "مكية", verses: 45 },
+            { id: 36, name: "يس", type: "مكية", verses: 83 },
+            { id: 37, name: "الصافات", type: "مكية", verses: 182 },
+            { id: 38, name: "ص", type: "مكية", verses: 88 },
+            { id: 39, name: "الزمر", type: "مكية", verses: 75 },
+            { id: 40, name: "غافر", type: "مكية", verses: 85 },
+            { id: 41, name: "فصلت", type: "مكية", verses: 54 },
+            { id: 42, name: "الشورى", type: "مكية", verses: 53 },
+            { id: 43, name: "الزخرف", type: "مكية", verses: 89 },
+            { id: 44, name: "الدخان", type: "مكية", verses: 59 },
+            { id: 45, name: "الجاثية", type: "مكية", verses: 37 },
+            { id: 46, name: "الأحقاف", type: "مكية", verses: 35 },
+            { id: 47, name: "محمد", type: "مدنية", verses: 38 },
+            { id: 48, name: "الفتح", type: "مدنية", verses: 29 },
+            { id: 49, name: "الحجرات", type: "مدنية", verses: 18 },
+            { id: 50, name: "ق", type: "مكية", verses: 45 },
+            { id: 51, name: "الذاريات", type: "مكية", verses: 60 },
+            { id: 52, name: "الطور", type: "مكية", verses: 49 },
+            { id: 53, name: "النجم", type: "مكية", verses: 62 },
+            { id: 54, name: "القمر", type: "مكية", verses: 55 },
+            { id: 55, name: "الرحمن", type: "مدنية", verses: 78 },
+            { id: 56, name: "الواقعة", type: "مكية", verses: 96 },
+            { id: 57, name: "الحديد", type: "مدنية", verses: 29 },
+            { id: 58, name: "المجادلة", type: "مدنية", verses: 22 },
+            { id: 59, name: "الحشر", type: "مدنية", verses: 24 },
+            { id: 60, name: "الممتحنة", type: "مدنية", verses: 13 },
+            { id: 61, name: "الصف", type: "مدنية", verses: 14 },
+            { id: 62, name: "الجمعة", type: "مدنية", verses: 11 },
+            { id: 63, name: "المنافقون", type: "مدنية", verses: 11 },
+            { id: 64, name: "التغابن", type: "مدنية", verses: 18 },
+            { id: 65, name: "الطلاق", type: "مدنية", verses: 12 },
+            { id: 66, name: "التحريم", type: "مدنية", verses: 12 },
+            { id: 67, name: "الملك", type: "مكية", verses: 30 },
+            { id: 68, name: "القلم", type: "مكية", verses: 52 },
+            { id: 69, name: "الحاقة", type: "مكية", verses: 52 },
+            { id: 70, name: "المعارج", type: "مكية", verses: 44 },
+            { id: 71, name: "نوح", type: "مكية", verses: 28 },
+            { id: 72, name: "الجن", type: "مكية", verses: 28 },
+            { id: 73, name: "المزمل", type: "مكية", verses: 20 },
+            { id: 74, name: "المدثر", type: "مكية", verses: 56 },
+            { id: 75, name: "القيامة", type: "مكية", verses: 40 },
+            { id: 76, name: "الإنسان", type: "مدنية", verses: 31 },
+            { id: 77, name: "المرسلات", type: "مكية", verses: 50 },
+            { id: 78, name: "النبأ", type: "مكية", verses: 40 },
+            { id: 79, name: "النازعات", type: "مكية", verses: 46 },
+            { id: 80, name: "عبس", type: "مكية", verses: 42 },
+            { id: 81, name: "التكوير", type: "مكية", verses: 29 },
+            { id: 82, name: "الإنفطار", type: "مكية", verses: 19 },
+            { id: 83, name: "المطففين", type: "مكية", verses: 36 },
+            { id: 84, name: "الإنشقاق", type: "مكية", verses: 25 },
+            { id: 85, name: "البروج", type: "مكية", verses: 22 },
+            { id: 86, name: "الطارق", type: "مكية", verses: 17 },
+            { id: 87, name: "الأعلى", type: "مكية", verses: 19 },
+            { id: 88, name: "الغاشية", type: "مكية", verses: 26 },
+            { id: 89, name: "الفجر", type: "مكية", verses: 30 },
+            { id: 90, name: "البلد", type: "مكية", verses: 20 },
+            { id: 91, name: "الشمس", type: "مكية", verses: 15 },
+            { id: 92, name: "الليل", type: "مكية", verses: 21 },
+            { id: 93, name: "الضحى", type: "مكية", verses: 11 },
+            { id: 94, name: "الشرح", type: "مكية", verses: 8 },
+            { id: 95, name: "التين", type: "مكية", verses: 8 },
+            { id: 96, name: "العلق", type: "مكية", verses: 19 },
+            { id: 97, name: "القدر", type: "مكية", verses: 5 },
+            { id: 98, name: "البينة", type: "مدنية", verses: 8 },
+            { id: 99, name: "الزلزلة", type: "مدنية", verses: 8 },
+            { id: 100, name: "العاديات", type: "مكية", verses: 11 },
+            { id: 101, name: "القارعة", type: "مكية", verses: 11 },
+            { id: 102, name: "التكاثر", type: "مكية", verses: 8 },
+            { id: 103, name: "العصر", type: "مكية", verses: 3 },
+            { id: 104, name: "الهمزة", type: "مكية", verses: 9 },
+            { id: 105, name: "الفيل", type: "مكية", verses: 5 },
+            { id: 106, name: "قريش", type: "مكية", verses: 4 },
+            { id: 107, name: "الماعون", type: "مكية", verses: 7 },
+            { id: 108, name: "الكوثر", type: "مكية", verses: 3 },
+            { id: 109, name: "الكافرون", type: "مكية", verses: 6 },
+            { id: 110, name: "النصر", type: "مدنية", verses: 3 },
+            { id: 111, name: "المسد", type: "مكية", verses: 5 },
+            { id: 112, name: "الإخلاص", type: "مكية", verses: 4 },
+            { id: 113, name: "الفلق", type: "مكية", verses: 5 },
+            { id: 114, name: "الناس", type: "مكية", verses: 6 }
+        ];
+
+        let currentSurahId = null;
+
+        // دالة عرض السور
+        function renderSurahs(surahList) {
+            const grid = document.getElementById('surahsGrid');
+            grid.innerHTML = '';
+            
+            surahList.forEach(surah => {
+                const formattedId = String(surah.id).padStart(3, '0');
+                const card = document.createElement('div');
+                card.className = 'surah-card';
+                card.setAttribute('data-name', surah.name);
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="surah-header">
+                            <span class="surah-number">${surah.id}</span>
+                            <span class="surah-name">سورة ${surah.name}</span>
+                        </div>
+                        <div class="surah-info">
+                            <span><i class="fa-solid fa-kaaba"></i> ${surah.type}</span>
+                            <span><i class="fa-solid fa-list-ol"></i> ${surah.verses} آية</span>
+                        </div>
+                    </div>
+                    <div class="surah-actions">
+                        <button class="btn btn-play" onclick="playSurah(${surah.id}, '${surah.name}')">
+                            <i class="fa-solid fa-play"></i> استماع
+                        </button>
+                        <button class="btn btn-download" onclick="downloadSurah(${surah.id}, '${surah.name}')">
+                            <i class="fa-solid fa-download"></i> تنزيل
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // تشغيل السورة
+        function playSurah(id, name) {
+            currentSurahId = id;
+            const serverUrl = document.getElementById('reciterSelect').value;
+            const formattedId = String(id).padStart(3, '0');
+            const audioUrl = `${serverUrl}${formattedId}.mp3`;
+            const reciterName = document.getElementById('reciterSelect').options[document.getElementById('reciterSelect').selectedIndex].text;
+
+            const player = document.getElementById('audioPlayer');
+            player.style.display = 'block';
+            player.src = audioUrl;
+            player.play();
+
+            document.getElementById('nowPlayingText').innerHTML = 
+                `<i class="fa-solid fa-volume-high"></i> يتم الآن تشغيل: <strong>سورة ${name}</strong> بصوت القارئ <strong>${reciterName}</strong>`;
+        }
+
+        // تنزيل السورة
+        function downloadSurah(id, name) {
+            const serverUrl = document.getElementById('reciterSelect').value;
+            const formattedId = String(id).padStart(3, '0');
+            const audioUrl = `${serverUrl}${formattedId}.mp3`;
+            
+            const a = document.createElement('a');
+            a.href = audioUrl;
+            a.target = '_blank';
+            a.download = `سورة_${name}.mp3`;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+        }
+
+        // تغيير القارئ
+        function changeReciter() {
+            if (currentSurahId) {
+                const currentSurah = surahs.find(s => s.id === currentSurahId);
+                if (currentSurah) {
+                    playSurah(currentSurah.id, currentSurah.name);
+                }
+            }
+        }
+
+        // البحث عن سورة
+        function filterSurahs() {
+            const query = document.getElementById('searchInput').value.trim().toLowerCase();
+            const filtered = surahs.filter(s => s.name.includes(query) || s.id.toString() === query);
+            renderSurahs(filtered);
+        }
+
+        // تحميل كل السور فور فتح الموقع
+        window.onload = () => {
+            renderSurahs(surahs);
+        };
+    </script>
+</body>
+</html>
